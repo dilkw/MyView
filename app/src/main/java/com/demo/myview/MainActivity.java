@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -93,6 +94,29 @@ public class MainActivity extends AppCompatActivity {
             public boolean onLongClick(View v) {
                 Log.d("MyImageView","长按2");
                 return true;
+            }
+        });
+
+
+        StatisticalChartView statisticalChartView = findViewById(R.id.statisticalChartView);
+        final ObjectAnimator animator1 = ObjectAnimator.ofFloat(statisticalChartView,"progress", 0,50);
+        //动画每次执行的时间（毫秒数）
+        animator1.setDuration(3000);
+        //设置动画执行次数（ValueAnimator.INFINITE为无限）
+        animator1.setRepeatCount(0);
+        //当动画执行次数大于零或是无限（ValueAnimator.INFINITE）时setRepeatMode才有效
+        //animator1.setRepeatMode(ValueAnimator.RESTART);
+        //设置插值（匀速，创建插值对象）
+        animator1.setInterpolator(new LinearInterpolator());
+//        ringView.setRo
+        //启动动画
+        animator1.start();
+
+        Button button = findViewById(R.id.btn);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animator1.start();
             }
         });
     }

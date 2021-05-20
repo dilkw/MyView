@@ -32,15 +32,15 @@ public class RingView extends View {
 
     float progress = 0;
 
-    int seconds = 0;
-    int minute = 0;
-    int hour = 0;
+    float seconds = 0;
+    float minute = 0;
+    float hour = 0;
 
-    public int getNumber() {
+    public float getNumber() {
         return seconds;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(float number) {
         this.seconds = number;
     }
 
@@ -55,6 +55,8 @@ public class RingView extends View {
 
     public void addSeconds() {
         ++seconds;
+//        minute = minute + seconds /60;
+//        hour = hour + minute/60;
         if (seconds == 60) {
             ++minute;
             seconds = 0;
@@ -66,6 +68,15 @@ public class RingView extends View {
                 }
             }
         }
+//        if (seconds == 60) {
+//            seconds = 0;
+//        }
+//        if (minute == 60) {
+//            minute = 0;
+//        }
+//        if (hour == 12) {
+//            hour = 0;
+//        }
         Log.d("imageView","ringView ------ addSeconds()");
     }
 
@@ -146,11 +157,13 @@ public class RingView extends View {
         canvas.drawLine(circleX,circleY + 80,circleX,0,mPaint);
         canvas.restore();
         canvas.save();
-        canvas.rotate(minute * 6,circleX,circleY);
+        canvas.rotate(minute * 6 + seconds * 6 / 60,circleX,circleY);
+        //canvas.rotate(minute * 6 / 60,circleX,circleY);
         canvas.drawLine(circleX,circleY + 70,circleX,40,mPaintMinute);
         canvas.restore();
         canvas.save();
-        canvas.rotate(hour * 30,circleX,circleY);
+        canvas.rotate(hour * 30 + minute / 2 + seconds / 120,circleX,circleY);
+        //canvas.rotate(hour * 6F / 60 / 60,circleX,circleY);
         canvas.drawLine(circleX,circleY + 40,circleX,80,mPaintHour);
         canvas.restore();
     }
