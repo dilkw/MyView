@@ -68,15 +68,6 @@ public class RingView extends View {
                 }
             }
         }
-//        if (seconds == 60) {
-//            seconds = 0;
-//        }
-//        if (minute == 60) {
-//            minute = 0;
-//        }
-//        if (hour == 12) {
-//            hour = 0;
-//        }
         Log.d("imageView","ringView ------ addSeconds()");
     }
 
@@ -159,12 +150,12 @@ public class RingView extends View {
         canvas.save();
         canvas.rotate(minute * 6 + seconds * 6 / 60,circleX,circleY);
         //canvas.rotate(minute * 6 / 60,circleX,circleY);
-        canvas.drawLine(circleX,circleY + 70,circleX,40,mPaintMinute);
+        canvas.drawLine(circleX,circleY + 70,circleX,50,mPaintMinute);
         canvas.restore();
         canvas.save();
         canvas.rotate(hour * 30 + minute / 2 + seconds / 120,circleX,circleY);
         //canvas.rotate(hour * 6F / 60 / 60,circleX,circleY);
-        canvas.drawLine(circleX,circleY + 40,circleX,80,mPaintHour);
+        canvas.drawLine(circleX,circleY + 40,circleX,100,mPaintHour);
         canvas.restore();
     }
 

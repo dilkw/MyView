@@ -9,7 +9,7 @@
 
     <com.demo.myview.StatisticalChartView
         android:id="@+id/statisticalChartView"
-        android:layout_width="300dp"
+        android:layout_width="330dp"
         android:layout_height="300dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
